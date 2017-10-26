@@ -105,7 +105,7 @@ func Upload(c echo.Context) error {
 
 func showImage(c echo.Context) error {
 	path := c.Param("id")
-	return c.File("./static/" + path)
+	return c.File(savePath + path)
 }
 
 func main() {
