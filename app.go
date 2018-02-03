@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"path/filepath"
-	"net/http"
-	"time"
-	"io"
-	"os"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"golang.org/x/crypto/acme/autocert"
+	"io"
+	"math/rand"
+	"net/http"
+	"os"
+	"path/filepath"
+	"time"
 )
 
 const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
@@ -71,11 +71,10 @@ func Upload(c echo.Context) error {
 
 	// Load the file
 	file, header, err := req.FormFile("file")
-	defer file.Close()
 	if err != nil {
 		return c.String(http.StatusBadRequest, "Bad Request")
 	}
-
+	defer file.Close()
 
 	// To read the file type
 	buff := make([]byte, 512)
